@@ -1,6 +1,7 @@
 TCH = arm-none-eabi-
 OPT = -mcpu=cortex-m3 -mthumb
-OBJ = main.o tst.o
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
 
 all : application.hex
 
