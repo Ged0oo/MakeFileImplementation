@@ -1,13 +1,14 @@
 TCH = arm-none-eabi-
 OPT = -mcpu=cortex-m3 -mthumb
+OBJ = main.o tst.o
 
 all : application.hex
 
 application.hex : application.elf
 	$(TCH)objcopy -O ihex $< $@
 
-application.elf : main.o tst.o
-	$(TCH)ld -T LinkerScript.ld main.o tst.o -o $@
+application.elf : $(OBJ)
+	$(TCH)ld -T LinkerScript.ld $(OBJ) -o $@
 
 %.o : %.c
 	$(TCH)gcc -c $(OPT) $< -o $@
