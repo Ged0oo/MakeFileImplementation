@@ -9,10 +9,7 @@ application.hex : application.elf
 application.elf : main.o tst.o
 	$(TCH)ld -T LinkerScript.ld main.o tst.o -o $@
 
-main.o : main.c
-	$(TCH)gcc -c $(OPT) $< -o $@
-	
-tst.o : tst.c
+%.o : %.c
 	$(TCH)gcc -c $(OPT) $< -o $@
 		
 clean : 
